@@ -1,0 +1,132 @@
+\documentclass[
+    10pt,
+    DIV=36,
+    BCOR=0mm,
+    onesided,
+    paper=4.25in:5.5in,
+]{scrartcl}
+
+\usepackage{booktabs}
+\usepackage{luacode}
+\usepackage{xstring}
+\usepackage{siunitx}
+\usepackage{tabu}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+\directlua{dofile("./fakeData.lua")}
+
+$m=\SI{500}{\gram}$, $\theta_{\text{max}}=\ang{10}$
+\begin{center}
+\begin{tabu}{X[c]|X[c]X[c]X[c]X[c]}
+    $l/(\si{\meter})$
+    & $t_1/(\si{\second})$
+    & $t_2/(\si{\second})$
+    & $t_3/(\si{\second})$
+    & $t_4/(\si{\second})$ \\
+    \midrule
+    0.2 & \directlua{printPeriod(0.2,10,0.1)}
+        & \directlua{printPeriod(0.2,10,0.1)}
+        & \directlua{printPeriod(0.2,10,0.1)}
+        & \directlua{printPeriod(0.2,10,0.1)}\\
+    0.4 & \directlua{printPeriod(0.4,10,0.1)}
+        & \directlua{printPeriod(0.4,10,0.1)}
+        & \directlua{printPeriod(0.4,10,0.1)}
+        & \directlua{printPeriod(0.4,10,0.1)}\\
+    0.6 & \directlua{printPeriod(0.6,10,0.1)}
+        & \directlua{printPeriod(0.6,10,0.1)}
+        & \directlua{printPeriod(0.6,10,0.1)}
+        & \directlua{printPeriod(0.6,10,0.1)}\\
+    0.8 & \directlua{printPeriod(0.8,10,0.1)}
+        & \directlua{printPeriod(0.8,10,0.1)}
+        & \directlua{printPeriod(0.8,10,0.1)}
+        & \directlua{printPeriod(0.8,10,0.1)}\\
+    1.0 & \directlua{printPeriod(1.0,10,0.1)}
+        & \directlua{printPeriod(1.0,10,0.1)}
+        & \directlua{printPeriod(1.0,10,0.1)}
+        & \directlua{printPeriod(1.0,10,0.1)}\\
+\end{tabu}
+\end{center}
+
+$l=\SI{1.0}{\meter}$, $\theta_{\text{max}}=\ang{10}$
+\begin{center}
+\begin{tabu}{X[c]|X[c]X[c]X[c]X[c]}
+    $m/(\si{\gram})$
+    & $t_1/(\si{\second})$
+    & $t_2/(\si{\second})$
+    & $t_3/(\si{\second})$
+    & $t_4/(\si{\second})$ \\
+    \midrule
+    20  & \directlua{printPeriod(1.0,10,0.1)}
+        & \directlua{printPeriod(1.0,10,0.1)}
+        & \directlua{printPeriod(1.0,10,0.1)}
+        & \directlua{printPeriod(1.0,10,0.1)}\\
+    50  & \directlua{printPeriod(1.0,10,0.1)}
+        & \directlua{printPeriod(1.0,10,0.1)}
+        & \directlua{printPeriod(1.0,10,0.1)}
+        & \directlua{printPeriod(1.0,10,0.1)}\\
+    100 & \directlua{printPeriod(1.0,10,0.1)}
+        & \directlua{printPeriod(1.0,10,0.1)}
+        & \directlua{printPeriod(1.0,10,0.1)}
+        & \directlua{printPeriod(1.0,10,0.1)}\\
+    500 & \directlua{printPeriod(1.0,10,0.1)}
+        & \directlua{printPeriod(1.0,10,0.1)}
+        & \directlua{printPeriod(1.0,10,0.1)}
+        & \directlua{printPeriod(1.0,10,0.1)}\\
+    1000& \directlua{printPeriod(1.0,10,0.1)}
+        & \directlua{printPeriod(1.0,10,0.1)}
+        & \directlua{printPeriod(1.0,10,0.1)}
+        & \directlua{printPeriod(1.0,10,0.1)}\\
+\end{tabu}
+\end{center}
+
+$m=\SI{500}{\gram}$, $l=\SI{1.0}{\meter}$
+\begin{center}
+\begin{tabu}{X[c]|X[c]X[c]X[c]X[c]}
+    $\theta/(\si{\degree})$
+    & $t_1/(\si{\second})$
+    & $t_2/(\si{\second})$
+    & $t_3/(\si{\second})$
+    & $t_4/(\si{\second})$ \\
+    \midrule
+    5   & \directlua{printPeriod(1.0,5,0.1)}
+        & \directlua{printPeriod(1.0,5,0.1)}
+        & \directlua{printPeriod(1.0,5,0.1)}
+        & \directlua{printPeriod(1.0,5,0.1)} \\
+    10  & \directlua{printPeriod(1.0,10,0.1)}
+        & \directlua{printPeriod(1.0,10,0.1)}
+        & \directlua{printPeriod(1.0,10,0.1)}
+        & \directlua{printPeriod(1.0,10,0.1)} \\
+    15  & \directlua{printPeriod(1.0,15,0.1)}
+        & \directlua{printPeriod(1.0,15,0.1)}
+        & \directlua{printPeriod(1.0,15,0.1)}
+        & \directlua{printPeriod(1.0,15,0.1)} \\
+    20  & \directlua{printPeriod(1.0,20,0.1)}
+        & \directlua{printPeriod(1.0,20,0.1)}
+        & \directlua{printPeriod(1.0,20,0.1)}
+        & \directlua{printPeriod(1.0,20,0.1)} \\
+    25  & \directlua{printPeriod(1.0,25,0.1)}
+        & \directlua{printPeriod(1.0,25,0.1)}
+        & \directlua{printPeriod(1.0,25,0.1)}
+        & \directlua{printPeriod(1.0,25,0.1)} \\
+    30  & \directlua{printPeriod(1.0,30,0.1)}
+        & \directlua{printPeriod(1.0,30,0.1)}
+        & \directlua{printPeriod(1.0,30,0.1)}
+        & \directlua{printPeriod(1.0,30,0.1)} \\
+    35  & \directlua{printPeriod(1.0,35,0.1)}
+        & \directlua{printPeriod(1.0,35,0.1)}
+        & \directlua{printPeriod(1.0,35,0.1)}
+        & \directlua{printPeriod(1.0,35,0.1)} \\
+    40  & \directlua{printPeriod(1.0,40,0.1)}
+        & \directlua{printPeriod(1.0,40,0.1)}
+        & \directlua{printPeriod(1.0,40,0.1)}
+        & \directlua{printPeriod(1.0,40,0.1)} \\
+    45  & \directlua{printPeriod(1.0,45,0.1)}
+        & \directlua{printPeriod(1.0,45,0.1)}
+        & \directlua{printPeriod(1.0,45,0.1)}
+        & \directlua{printPeriod(1.0,45,0.1)} \\
+\end{tabu}
+\end{center}
+
+\end{document}
