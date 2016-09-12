@@ -29,3 +29,6 @@
 # RevTeX specific
 *.end
 
+## Lua specific
+*.fls
+
