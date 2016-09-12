@@ -1,9 +1,13 @@
 #!/usr/bin/bash
 
-## TODO: pass n as argument, have default if not provided
+if ! [[ ${1} ]] || [[ $# -gt 1 ]]; then
+    echo "  Bad argument ORDER"
+    echo "  Syntax: $(basename $0) [number fake data]"
+    exit 1
+fi
 
 # Script to generate and print n bingo cards
-n=25
+n=${1}
 
 for ((i=1;i<=n;i++))
 do
@@ -36,3 +40,4 @@ echo "pdfnup --nup 2x2 --papersize '{11in,8.5in}' --frame true ${n}-joined.pdf"
 #do
 #    rm ${i}.pdf
 #done
+
